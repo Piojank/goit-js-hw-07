@@ -2,7 +2,7 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 const query = (selector) => document.querySelector(selector);
-const gallery = query(".gallery");
+const gallery = query('.gallery');
 
 const createGrid = galleryItems => {
   galleryItems.forEach(item => {
@@ -19,7 +19,7 @@ const createGrid = galleryItems => {
     galleryImage.classList.add("gallery__image");
     gallery.append(galleryImage);
   })
-};
+}
 
 function selectImage(event) { 
   event.preventDefault();
