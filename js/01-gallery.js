@@ -43,5 +43,5 @@ function selectImage(event) {
 
 }
 
-console.log(galleryItems);
-gallery.addEventListener("click", selectImage); 
+createGrid(galleryItems)
+gallery.addEventListener("click", selectImage)
