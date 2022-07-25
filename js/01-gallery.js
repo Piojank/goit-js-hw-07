@@ -26,7 +26,7 @@ const createGrid = galleryItems => {
 
 function selectImage(event) { 
   event.preventDefault();
-  if (event.target.type !== "img") { 
+  if (event.target.nodeName !== "IMG") { 
     return;
   }
   
