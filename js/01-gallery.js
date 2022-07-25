@@ -15,9 +15,12 @@ const createGrid = galleryItems => {
     galleryLink.href = item.original;
     gallery.append(galleryLink);
 
-    const galleryImage = document.createElement("img");
-    galleryImage.classList.add("gallery__image");
-    gallery.append(galleryImage);
+    const galleryImg = document.createElement("img");
+    galleryImg.classList.add("gallery__image");
+    galleryImg.src = item.preview;
+    galleryImg.dataset.source = item.original;
+    galleryImg.alt = item.description;
+    galleryLink.append(galleryImg);
   })
 }
 
