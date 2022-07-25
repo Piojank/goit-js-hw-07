@@ -1,0 +1,47 @@
+import { galleryItems } from './gallery-items.js';
+// Change code below this line
+
+const query = (selector) => document.querySelector(selector);
+const gallery = query(".gallery");
+
+const createGrid = galleryItems => {
+  galleryItems.forEach(item => {
+    const galleryItem = document.createElement("div");
+    galleryItem.classList.add("gallery__item")
+    gallery.append(galleryItem);
+
+    const galleryLink = document.createElement("a");
+    galleryLink.classList.add("gallery__Link");
+    galleryLink.href = item.original;
+    gallery.append(galleryLink);
+
+    const galleryImage = document.createElement("img");
+    galleryImage.classList.add("gallery__image");
+    gallery.append(galleryImage);
+  })
+};
+
+function selectImage(event) { 
+  event.preventDefault();
+  if (event.target.type !== "img") { 
+    return;
+  }
+  
+  galleryItems.forEach(item => {
+    const instance = basicLightbox.create(`<img src=${item.original}>`)
+    if (event.target.src === item.preview) {
+      instance.show();
+    }
+    if (instance.visible() === true) {
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          instance.close();
+        }
+      });
+    }
+  })
+
+}
+
+console.log(galleryItems);
+gallery.addEventListener("click", selectImage); 
