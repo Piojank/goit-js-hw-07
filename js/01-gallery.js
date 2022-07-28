@@ -2,18 +2,18 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 const query = (selector) => document.querySelector(selector);
-const gallery = query('.gallery');
+const gallery = qs('.gallery');
 
-const createGrid = galleryItems => {
+const createGrid = galleryItems  => {
   galleryItems.forEach(item => {
     const galleryItem = document.createElement("div");
     galleryItem.classList.add("gallery__item")
     gallery.append(galleryItem);
 
     const galleryLink = document.createElement("a");
-    galleryLink.classList.add("gallery__Link");
+    galleryLink.classList.add("gallery__link");
     galleryLink.href = item.original;
-    gallery.append(galleryLink);
+    galleryItem.append(galleryLink);
 
     const galleryImg = document.createElement("img");
     galleryImg.classList.add("gallery__image");
@@ -24,12 +24,11 @@ const createGrid = galleryItems => {
   })
 }
 
-function selectImage(event) { 
+function selectImage(event) {
   event.preventDefault();
-  if (event.target.nodeName !== "IMG") { 
+  if (event.target.nodeName !== "IMG") {
     return;
   }
-  
   galleryItems.forEach(item => {
     const instance = basicLightbox.create(`<img src=${item.original}>`)
     if (event.target.src === item.preview) {
@@ -43,7 +42,6 @@ function selectImage(event) {
       });
     }
   })
-
 }
 
 createGrid(galleryItems)
